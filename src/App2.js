@@ -14,35 +14,38 @@ const massiveData = [
 class App2 extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "Ears" };
+    this.state = { value: "default" };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
+    this.setState({ value: event.target.value });
+    console.log(this.state.value);
+    return ()
   }
 
   render() {
     return (
       <div>
-        <h1>С выпадающим списком</h1>
-
-        <select value={this.state.value} onChange={this.handleChange}>
+        <select onChange={this.handleChange}>
           <option value="Ears">Уши</option>
           <option value="Eyes">Глаза</option>
           <option selected value="default">
             По умолчанию
           </option>
           <option value="hairs">Волосы</option>
+          {
+            (this.state = "Eyes" && (
+              <p> вы выбрали программу для ушей</p>
+            ))
+          }
         </select>
       </div>
-
-handleSubmit(event) {
-  alert('Ваш любимый вкус: ' + this.state.value);
-  event.preventDefault();
-}
     );
   }
 }
+
+
+
 
 export default App2;
